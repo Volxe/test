@@ -1,0 +1,24 @@
+<div class="stat-block">
+    <h2>Общая статистика</h2>
+    <p>Всего исправлений: {{ stats.total_fixes }}</p>
+    <p>Успешных исправлений: {{ stats.successful_fixes }}</p>
+    <p>Процент успешных исправлений: {{ stats.success_rate }}</p>
+</div>
+
+<div class="stat-block">
+    <h2>Топ-5 наиболее частых ошибок</h2>
+    <ul>
+    {% for error, count in stats.error_counts.items() %}
+        <li>{{ error }}: {{ count }}</li>
+    {% endfor %}
+    </ul>
+</div>
+
+<div class="stat-block">
+    <h2>Топ-5 наиболее эффективных правил</h2>
+    <ul>
+    {% for rule, count in stats.fix_counts.items() %}
+        <li>{{ rule }}: {{ count }}</li>
+    {% endfor %}
+    </ul>
+</div>

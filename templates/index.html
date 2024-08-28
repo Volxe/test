@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoFixer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #000;
+        }
+        .container {
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #333;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+            display: block;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AutoFixer</h1>
+        <p>Загрузите Python файл (.py) или текстовый файл (.txt) для исправления стиля кода:</p>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".py,.txt">
+            <button type="submit" class="btn">Исправить файл</button>
+        </form>
+    </div>
+    <div class="container">
+        <h2>Дополнительные функции</h2>
+        <ul>
+            <li><a href="/logs" class="btn">Просмотр логов</a></li>
+            <li><a href="/statistics" class="btn">Просмотр статистики</a></li>
+        </ul>
+    </div>
+</body>
+</html>

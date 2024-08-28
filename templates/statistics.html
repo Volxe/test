@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика AutoFixer</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        h1, h2 {
+            color: #000;
+        }
+        .container {
+            margin-bottom: 30px;
+        }
+        .stat-block {
+            background-color: #f8f8f8;
+            border: 1px solid #e1e1e1;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #333;
+        }
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Статистика AutoFixer</h1>
+    
+    <div id="loading">Обновление статистики...</div>
+    <div id="statistics-container" class="container">
+        <!-- Статистика будет обновляться здесь -->
+    </div>
+    
+    <a href="/" class="btn">Вернуться на главную</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function updateStatistics() {
+            $('#loading').show();
+            $.ajax({
+                url: '/get_statistics',
+                method: 'GET',
+                success: function(data) {
+                    $('#statistics-container').html(data);
+                    $('#loading').hide();
+                },
+                error: function() {
+                    console.error('Ошибка при обновлении статистики');
+                    $('#loading').hide();
+                }
+            });
+        }
+
+        // Обновляем статистику каждые 5 секунд
+        setInterval(updateStatistics, 5000);
+
+        // Обновляем статистику при загрузке страницы
+        $(document).ready(updateStatistics);
+    </script>
+</body>
+</html>

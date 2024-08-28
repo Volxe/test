@@ -1,0 +1,5 @@
+{% for timestamp, message in logs|reverse %}
+    <div class="log-entry">
+        <strong>{{ timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</strong>: {{ message }}
+    </div>
+{% endfor %}
